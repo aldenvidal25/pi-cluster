@@ -1,0 +1,6 @@
+kubeconfig
+mise.toml
+scripts/
+.git/
+.devpodignore
+.devcontainer/
