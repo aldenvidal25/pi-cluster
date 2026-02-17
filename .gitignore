@@ -4,4 +4,4 @@ scripts/
 .git/
 .devpodignore
 .devcontainer/
-nohop.out
+*.out
