@@ -1,0 +1,14 @@
+{
+  "build": {
+    "context": "..",
+    "dockerfile": "Dockerfile"
+  },
+  "postCreateCommand": "scripts/setup",
+  "forwardPorts": [8080],
+  "portsAttributes": {
+    "8080": {
+      "label": "Linkding",
+      "onAutoForward": "notify"
+    }
+  }
+}
