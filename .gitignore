@@ -1,7 +1,12 @@
 kubeconfig
-mise.toml
-scripts/
-.git/
+*.toml
 .devpodignore
-.devcontainer/
+CLAUDE.md
+*55.json
 *.out
+.git/
+.claude/
+.devcontainer/
+scripts/
+
+
