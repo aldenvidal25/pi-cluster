@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: audiobookshelf
+spec:
+  template:
+    spec:
+      nodeSelector:
+        storage: ssd
+      containers:
+        - name: audiobookshelf
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
