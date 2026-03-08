@@ -3,5 +3,6 @@ kind: Kustomization
 namespace: audiobookshelf
 resources:
   - ../../base/audiobookshelf
+  - secret.yaml
 patches:
   - path: node-patch.yaml
