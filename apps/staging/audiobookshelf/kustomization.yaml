@@ -4,5 +4,6 @@ namespace: audiobookshelf
 resources:
   - ../../base/audiobookshelf
   - secret.yaml
+  - cloudflare.yaml
 patches:
   - path: node-patch.yaml
