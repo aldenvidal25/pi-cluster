@@ -6,15 +6,24 @@ spec:
   selector:
     matchLabels:
       app: cloudflared
-  replicas: 2 # You could also consider elastic scaling for this deployment
+  replicas: 1
   template:
     metadata:
       labels:
         app: cloudflared
     spec:
+      nodeSelector:
+        storage: ssd
       containers:
         - name: cloudflared
           image: cloudflare/cloudflared:latest
+          resources:
+            requests:
+              cpu: 10m
+              memory: 32Mi
+            limits:
+              cpu: 50m
+              memory: 128Mi
           args:
             - tunnel
 
