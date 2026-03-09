@@ -22,7 +22,38 @@ spec:
       resources:
         requests:
           cpu: 100m
-          memory: 192Mi
+          memory: 128Mi
         limits:
           cpu: 300m
-          memory: 384Mi
+          memory: 256Mi
+    alertmanager:
+      alertmanagerSpec:
+        nodeSelector:
+          storage: ssd
+        resources:
+          requests:
+            cpu: 10m
+            memory: 64Mi
+          limits:
+            cpu: 100m
+            memory: 256Mi
+    prometheusOperator:
+      nodeSelector:
+        storage: ssd
+      resources:
+        requests:
+          cpu: 10m
+          memory: 64Mi
+        limits:
+          cpu: 100m
+          memory: 256Mi
+    kube-state-metrics:
+      nodeSelector:
+        storage: ssd
+      resources:
+        requests:
+          cpu: 10m
+          memory: 64Mi
+        limits:
+          cpu: 100m
+          memory: 256Mi

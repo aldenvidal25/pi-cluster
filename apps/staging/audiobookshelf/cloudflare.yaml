@@ -6,15 +6,24 @@ spec:
   selector:
     matchLabels:
       app: cloudflared
-  replicas: 2 # You could also consider elastic scaling for this deployment
+  replicas: 1 # changed value from 2 to 1, audiobookshelf is pinned to a single node. Extra replica for HA is wasted resources.
   template:
     metadata:
       labels:
         app: cloudflared
     spec:
+      nodeSelector:
+        storage: ssd
       containers:
         - name: cloudflared
           image: cloudflare/cloudflared:latest
+          resources:
+            requests:
+              cpu: 10m
+              memory: 32Mi
+            limits:
+              cpu: 50m
+              memory: 128Mi
           args:
             - tunnel
             # Points cloudflared to the config file, which configures what
