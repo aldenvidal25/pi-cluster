@@ -35,7 +35,9 @@ spec:
     ports:
       web:
         exposedPort: 80
+        hostPort: 80
       websecure:
         exposedPort: 443
+        hostport: 80
     service:
-      type: LoadBalancer
+      type: ClusterIP
