@@ -38,6 +38,6 @@ spec:
         hostPort: 80
       websecure:
         exposedPort: 443
-        hostport: 80
+        hostPort: 443
     service:
       type: ClusterIP
