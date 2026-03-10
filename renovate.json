@@ -6,7 +6,7 @@
     ]
   },
   "flux": {
-    "filematch": [
+    "fileMatch": [
       "\\.yaml$"
     ]
   }
