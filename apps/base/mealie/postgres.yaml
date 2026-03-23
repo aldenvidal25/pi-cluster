@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mealie-postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mealie-postgres
+  template:
+    metadata:
+      labels:
+        app: mealie-postgres
+    spec:
+      securityContext:
+        fsGroup: 999
+        runAsUser: 999
+        runAsGroup: 999
+
+      containers:
+        - name: postgres
+          securityContext:
+            allowPrivilegeEscalation: false
+          image: postgres:17
+
+          ports:
+            - containerPort: 5432
+              protocol: TCP
+
+          envFrom:
+            - configMapRef:
+                name: mealie-config
+
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mealie-postgres-secret
+                  key: POSTGRES_PASSWORD
+
+          volumeMounts:
+            - name: postgres-data
+              mountPath: /var/lib/postgresql/data
+              subPath: pgdata
+
+      restartPolicy: Always
+
+      volumes:
+        - name: postgres-data
+          persistentVolumeClaim:
+            claimName: mealie-postgres-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mealie-postgres
+spec:
+  ports:
+    - port: 5432
+      targetPort: 5432
+  selector:
+    app: mealie-postgres
+  type: ClusterIP
