@@ -19,6 +19,8 @@ spec:
 
       containers:
         - name: postgres
+          securityContext:
+            allowPrivilegeEscalation: false
           image: postgres:17
 
           ports:
