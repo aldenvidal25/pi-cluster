@@ -21,6 +21,9 @@ spec:
   values:
     deployment:
       kind: DaemonSet
+    updateStrategy:
+      rollingUpdate:
+        maxUnavailable: 1
     ingressClass:
       name: traefik
       enabled: true
