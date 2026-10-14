@@ -24,6 +24,7 @@ spec:
     updateStrategy:
       rollingUpdate:
         maxUnavailable: 1
+        maxSurge: 0
     ingressClass:
       name: traefik
       enabled: true

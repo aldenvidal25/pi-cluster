@@ -7,3 +7,4 @@ kubeconfig
 .devcontainer/
 scripts/
 /.kube/
+tmp/
