@@ -4,6 +4,7 @@ kubeconfig
 *55.json
 *.out
 .git/
+.envrc
 .devcontainer/
 scripts/
 /.kube/
