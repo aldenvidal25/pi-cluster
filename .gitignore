@@ -9,3 +9,11 @@ kubeconfig
 scripts/
 /.kube/
 tmp/
+
+# secrets
+age.agekey
+*.agekey
+tls.key
+tls.crt
+*.key
+test-secret.yaml
