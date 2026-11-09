@@ -17,15 +17,21 @@ spec:
             cpu: "1"
             memory: 2Gi
     grafana:
-      nodeSelector:
-        storage: ssd
       resources:
         requests:
-          cpu: 100m
-          memory: 128Mi
+          cpu: 200m
+          memory: 192Mi
         limits:
-          cpu: 300m
-          memory: 256Mi
+          cpu: "1"
+          memory: 384Mi
+      startupProbe:
+        httpGet:
+          path: /api/health
+          port: grafana
+        periodSeconds: 10
+        failureThreshold: 30
+      nodeSelector:
+        storage: ssd
     alertmanager:
       alertmanagerSpec:
         nodeSelector:
